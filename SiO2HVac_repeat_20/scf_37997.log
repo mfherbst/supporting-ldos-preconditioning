@@ -1,0 +1,75 @@
+#
+#-- SCF SiO2HVac n_repeat=20 -- mixing=HybridMixing(0.481, 1, 1.0, identity, true, false)
+#
+
+hostname       = clustern10
+
+started on     = 2020-08-08T00:07:57.304
+julia threads  = 4
+BLAS threads   = 4
+
+temperature    = 0.0
+smearing       = DFTK.Smearing.None()
+diag(lattice)  = [16.32, 10.35, 97.85]
+Ecut           = 20
+fft_size       = (54, 36, 300)
+kgrid          = [3, 5, 1]
+irreducible k  = 15
+n_bands        = 260
+n_electr       = 488
+mixing         = HybridMixing(0.481, 1, 1.0, identity, true, false)
+n     Energy            Eₙ-Eₙ₋₁     ρout-ρin   Diag
+---   ---------------   ---------   --------   ----
+  1   -1046.170790784         NaN   2.84e+00    37.7 
+  2   -1047.836747471   -1.67e+00   1.40e+00    40.1 
+  3   -1047.908606415   -7.19e-02   5.15e-01    30.9 
+  4   -1047.936733941   -2.81e-02   6.76e-02    27.3 
+  5   -1047.940435949   -3.70e-03   2.60e-02    17.1 
+  6   -1047.940670163   -2.34e-04   6.20e-03    12.9 
+  7   -1047.940683368   -1.32e-05   2.55e-03    9.5 
+  8   -1047.940684576   -1.21e-06   4.14e-04    8.9 
+  9   -1047.940684732   -1.56e-07   1.60e-04    14.0 
+ 10   -1047.940684744   -1.17e-08   5.96e-05    10.5 
+ 11   -1047.940684745   -8.61e-10   1.65e-05    9.2 
+ 12   -1047.940684745   -1.63e-10   5.41e-06    11.4 
+ 13   -1047.940684745    0.00e+00   1.74e-06    13.6 
+Energy breakdown:
+    Kinetic             686.6029134
+    AtomicLocal         -38953.3038493
+    AtomicNonlocal      111.3917317
+    Ewald               18197.4845146
+    PspCorrection       -2.9024030
+    Hartree             19161.5474746
+    Xc                  -248.7610668
+
+    total               -1047.940684744763
+
+ ──────────────────────────────────────────────────────────────────────────────
+                                       Time                   Allocations      
+                               ──────────────────────   ───────────────────────
+       Tot / % measured:           26900s / 100%            4698GiB / 100%     
+
+ Section               ncalls     time   %tot     avg     alloc   %tot      avg
+ ──────────────────────────────────────────────────────────────────────────────
+ self_consistent_field      1   26877s   100%  26877s   4691GiB  100%   4691GiB
+   LOBPCG                 195   24928s  92.7%    128s   4085GiB  87.0%  20.9GiB
+     block multipli...  21.1k    7861s  29.2%   373ms   1082GiB  23.0%  52.5MiB
+     Hamiltonian mu...  3.84k    4638s  17.2%   1.21s    565GiB  12.0%   150MiB
+     rayleigh_ritz      3.65k    3715s  13.8%   1.02s   21.7GiB  0.46%  6.09MiB
+     ortho              15.8k    2877s  10.7%   182ms    728GiB  15.5%  47.1MiB
+   energy_hamiltonian      27    1099s  4.09%   40.7s    128GiB  2.73%  4.75GiB
+   compute_density         13     359s  1.33%   27.6s    451GiB  9.61%  34.7GiB
+   QR orthonormaliz...    195    89.4s  0.33%   459ms   20.5GiB  0.44%   108MiB
+   mixing Hybrid           13    4.72s  0.02%   363ms   2.53GiB  0.05%   199MiB
+ PlaneWaveBasis             1    20.0s  0.07%   20.0s   7.71GiB  0.16%  7.71GiB
+   Instantiation At...      1    10.2s  0.04%   10.2s   5.28GiB  0.11%  5.28GiB
+   Instantiation Ewald      1    6.24s  0.02%   6.24s   2.19GiB  0.05%  2.19GiB
+   Instantiation At...      1    2.30s  0.01%   2.30s   49.0MiB  0.00%  49.0MiB
+   build_kpoints            1    277ms  0.00%   277ms    119MiB  0.00%   119MiB
+   Instantiation Ki...      1   17.0ms  0.00%  17.0ms   8.09MiB  0.00%  8.09MiB
+   Instantiation Ha...      1   5.65ms  0.00%  5.65ms   13.4MiB  0.00%  13.4MiB
+   Instantiation Ps...      1    129μs  0.00%   129μs   2.38KiB  0.00%  2.38KiB
+   Instantiation Xc         1   3.10μs  0.00%  3.10μs     32.0B  0.00%    32.0B
+ guess_density              1    1.72s  0.01%   1.72s   75.7MiB  0.00%  75.7MiB
+ spglib_get_symmetry        1   6.37ms  0.00%  6.37ms    250KiB  0.00%   250KiB
+ ──────────────────────────────────────────────────────────────────────────────

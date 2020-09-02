@@ -1,0 +1,13 @@
+pwscf.save
+*/*.hdf5
+*/*.vti
+*/summary.svg
+*_dftk/compression_done
+*_anderson/damping.svg
+old
+*/*.done
+*/*.running
+*~
+.*.swp
+.*.swo
+/*.pdf

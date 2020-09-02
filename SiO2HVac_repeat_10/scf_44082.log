@@ -1,0 +1,78 @@
+#
+#-- SCF SiO2HVac n_repeat=10 -- mixing=HybridMixing(0.486, 1, 1.0, identity, true, false)
+#
+
+hostname       = clustern09
+
+started on     = 2020-08-07T20:33:47.982
+julia threads  = 4
+BLAS threads   = 4
+
+temperature    = 0.0
+smearing       = DFTK.Smearing.None()
+diag(lattice)  = [16.32, 10.35, 50.75]
+Ecut           = 20
+fft_size       = (54, 36, 160)
+kgrid          = [3, 5, 1]
+irreducible k  = 15
+n_bands        = 136
+n_electr       = 248
+mixing         = HybridMixing(0.486, 1, 1.0, identity, true, false)
+n     Energy            Eₙ-Eₙ₋₁     ρout-ρin   Diag
+---   ---------------   ---------   --------   ----
+  1   -524.6785379193         NaN   2.07e+00    26.3 
+  2   -525.6072387148   -9.29e-01   1.01e+00    31.3 
+  3   -525.6557387719   -4.85e-02   3.78e-01    23.2 
+  4   -525.6769983984   -2.13e-02   5.94e-02    18.1 
+  5   -525.6799398933   -2.94e-03   2.16e-02    14.1 
+  6   -525.6801258401   -1.86e-04   4.97e-03    9.5 
+  7   -525.6801358494   -1.00e-05   2.08e-03    7.5 
+  8   -525.6801365663   -7.17e-07   3.84e-04    8.9 
+  9   -525.6801366533   -8.70e-08   1.29e-04    11.7 
+ 10   -525.6801366620   -8.68e-09   4.21e-05    7.9 
+ 11   -525.6801366625   -5.83e-10   1.30e-05    7.3 
+ 12   -525.6801366626   -2.03e-11   4.52e-06    8.1 
+ 13   -525.6801366626   -1.31e-11   1.69e-06    9.5 
+ 14   -525.6801366626   -3.10e-11   3.49e-07    9.6 
+ 15   -525.6801366626    1.73e-11   1.44e-07    10.0 
+ 16   -525.6801366626   -9.89e-12   5.03e-08    6.9 
+Energy breakdown:
+    Kinetic             346.2871435
+    AtomicLocal         -5899.4158835
+    AtomicNonlocal      56.2461756
+    Ewald               2308.1231433
+    PspCorrection       -1.4221712
+    Hartree             2790.4673748
+    Xc                  -125.9659191
+
+    total               -525.680136662600
+
+ ──────────────────────────────────────────────────────────────────────────────
+                                       Time                   Allocations      
+                               ──────────────────────   ───────────────────────
+       Tot / % measured:            5124s / 100%            1566GiB / 100%     
+
+ Section               ncalls     time   %tot     avg     alloc   %tot      avg
+ ──────────────────────────────────────────────────────────────────────────────
+ self_consistent_field      1    5118s   100%   5118s   1564GiB  100%   1564GiB
+   LOBPCG                 240    4721s  92.2%   19.7s   1348GiB  86.0%  5.61GiB
+     block multipli...  17.9k    1268s  24.8%  70.8ms    352GiB  22.5%  20.1MiB
+     Hamiltonian mu...  3.39k    1109s  21.7%   327ms    189GiB  12.0%  57.0MiB
+     rayleigh_ritz      3.15k     735s  14.3%   234ms   7.29GiB  0.47%  2.37MiB
+     ortho              13.7k     602s  11.8%  44.0ms    239GiB  15.2%  17.8MiB
+   energy_hamiltonian      33     180s  3.51%   5.45s   49.5GiB  3.16%  1.50GiB
+   compute_density         16    95.9s  1.87%   6.00s    158GiB  10.1%  9.90GiB
+   QR orthonormaliz...    240    14.9s  0.29%  62.1ms   5.66GiB  0.36%  24.1MiB
+   mixing Hybrid           16    482ms  0.01%  30.1ms   1.62GiB  0.10%   104MiB
+ PlaneWaveBasis             1    4.60s  0.09%   4.60s   2.10GiB  0.13%  2.10GiB
+   Instantiation At...      1    2.10s  0.04%   2.10s   1.51GiB  0.10%  1.51GiB
+   Instantiation Ewald      1    1.20s  0.02%   1.20s    486MiB  0.03%   486MiB
+   Instantiation At...      1    708ms  0.01%   708ms   26.1MiB  0.00%  26.1MiB
+   build_kpoints            1   81.2ms  0.00%  81.2ms   39.2MiB  0.00%  39.2MiB
+   Instantiation Ki...      1   4.65ms  0.00%  4.65ms   4.19MiB  0.00%  4.19MiB
+   Instantiation Ha...      1   4.40ms  0.00%  4.40ms   7.12MiB  0.00%  7.12MiB
+   Instantiation Ps...      1    130μs  0.00%   130μs   2.38KiB  0.00%  2.38KiB
+   Instantiation Xc         1   1.36μs  0.00%  1.36μs     32.0B  0.00%    32.0B
+ guess_density              1    564ms  0.01%   564ms   40.4MiB  0.00%  40.4MiB
+ spglib_get_symmetry        1   2.92ms  0.00%  2.92ms   77.0KiB  0.00%  77.0KiB
+ ──────────────────────────────────────────────────────────────────────────────
