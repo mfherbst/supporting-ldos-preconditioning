@@ -13,6 +13,8 @@ The code in this repository has been used to run all calculations
 and produce all plots of the above paper.
 It relies on [DFTK](https://dftk.org) version 0.1.8
 and [ASE](https://wiki.fysik.dtu.dk/ase/).
+For more details see
+[this blog article](https://michael-herbst.com/2020-ldos-preconditioning.html).
 
 In particular:
   - The folder `systems` contains the employed lattice setups.
